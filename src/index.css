@@ -3,3 +3,7 @@ body {
   padding: 0;
   background-color: antiquewhite;
 }
+
+ul {
+  list-style:none;
+}
