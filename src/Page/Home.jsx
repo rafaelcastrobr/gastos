@@ -17,7 +17,7 @@ export default function Home() {
 
   function handleClickAdd(e) {
     setChave(false)
-    if (localStorage.getItem('dados') === null) {
+    if (localStorage.getItem('dados').length === 0) {
       localStorage.setItem('dados', JSON.stringify([dados]))
     } else {
       localStorage.setItem('dados', JSON.stringify([
@@ -26,7 +26,7 @@ export default function Home() {
       ]))
     }
     setDados({ id: Math.floor(Date.now() * Math.random()).toString(36), descricao: '', valor: '' })
-    
+
   }
 
   function handleClickRemove(e) {
@@ -50,10 +50,10 @@ export default function Home() {
 
     return somaDados
   }
-  
+
 
   useEffect(() => {
-   setSoma(somaValor())
+    setSoma(somaValor())
     if (chave) return
     function buscaLocalStorage() {
       if (localStorage.getItem('dados')) {
@@ -63,35 +63,38 @@ export default function Home() {
     }
 
     buscaLocalStorage()
-    
+
   }, [chave]);
 
 
 
   return (
     <div className="container">
-      <h1>Adicione seus gastos</h1>
+      <h1>ADICIONE OS GASTOS</h1>
       <div>
         <input placeholder="digite um titulo" type="text" value={dados.descricao} onChange={e => setDados({ ...dados, descricao: (e.target.value).toLocaleUpperCase() })} />
-        <input placeholder="digite um valor" type="number" value={dados.valor} onChange={e => setDados({ ...dados, valor: e.target.value })} />
-        <button onClick={handleClickAdd}>Adicionar</button>
+        <input className="input-valor" placeholder="digite um valor" type="number" value={dados.valor} onChange={e => setDados({ ...dados, valor: e.target.value })} />
       </div>
+      <button className="btn-adicionar" onClick={handleClickAdd}>+</button>
       <div>
+        <hr />
         <ul>
           {localDados && localDados.map(el => {
             return (
               <>
                 <li className="list-organizada" key={el.id} id={el.id}>
-                  <p>{el.descricao} * R$ <span style={{color: 'red'}}>{el.valor}</span></p>
-                  <button onClick={handleClickRemove}>Excluir</button>
+                  <p>{el.descricao} * <span style={{ color: 'red' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
+                  <button className="btn-excluir" onClick={handleClickRemove}>X</button>
                 </li>
               </>
             )
           })}
         </ul>
       </div>
-      <h1>Total</h1>
-      <span style={{color: 'red'}}>{soma}</span>
+      <div className="box-total">
+        <h1>Total</h1>
+        <p className="paragrafo-total"> <span style={{ color: 'red' }}> {soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
+      </div>
     </div>
   )
 }

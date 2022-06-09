@@ -1,7 +1,13 @@
+@font-face {
+  font-family: Bebas ;
+  src: url(./Fonts/BebasNeue-Regular.ttf);
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: antiquewhite;
+  font-family: Bebas, sans-serif;
 }
 
 ul {
