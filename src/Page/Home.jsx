@@ -17,7 +17,7 @@ export default function Home() {
 
   function handleClickAdd(e) {
     setChave(false)
-    if (localStorage.getItem('dados').length === 0) {
+    if (localStorage.getItem('dados') === null) {
       localStorage.setItem('dados', JSON.stringify([dados]))
     } else {
       localStorage.setItem('dados', JSON.stringify([
@@ -26,7 +26,6 @@ export default function Home() {
       ]))
     }
     setDados({ id: Math.floor(Date.now() * Math.random()).toString(36), descricao: '', valor: '' })
-
   }
 
   function handleClickRemove(e) {
@@ -64,7 +63,7 @@ export default function Home() {
 
     buscaLocalStorage()
 
-  }, [chave]);
+  }, [dados, chave]);
 
 
 
@@ -83,8 +82,8 @@ export default function Home() {
             return (
               <>
                 <li className="list-organizada" key={el.id} id={el.id}>
-                  <p>{el.descricao} * <span style={{ color: 'red' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
                   <button className="btn-excluir" onClick={handleClickRemove}>X</button>
+                  <p>{el.descricao} * <span style={{ color: 'red' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
                 </li>
               </>
             )

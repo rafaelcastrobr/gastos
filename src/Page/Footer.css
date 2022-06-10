@@ -1,0 +1,13 @@
+.footer-creditos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  font-size: 13px;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+
+.footer-creditos img {
+  height: 35px;
+}

@@ -4,10 +4,18 @@
   flex-direction: column;
 }
 
+ul {
+  display: contents;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
 .list-organizada {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  justify-content: flex-start;
   height: auto;
 }
 
@@ -35,18 +43,6 @@ button {
 }
 
 
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  font-size: 13px;
-}
-
-footer img {
-  height: 35px;
-}
-
 .btn-adicionar {
   margin-top: 20px;
   font-size: 20px;
@@ -56,7 +52,7 @@ footer img {
 }
 
 .btn-excluir {
-  margin-left: 30px;
+  margin-right: 40px;
   color: antiquewhite;
   background-color: crimson;
   padding: 5px;
