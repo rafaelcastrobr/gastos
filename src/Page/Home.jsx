@@ -71,7 +71,7 @@ export default function Home() {
     <div className="container">
       <h1>ADICIONE OS GASTOS</h1>
       <div>
-        <input placeholder="digite um titulo" type="text" value={dados.descricao} onChange={e => setDados({ ...dados, descricao: (e.target.value).toLocaleUpperCase() })} />
+        <input className="input-titulo" placeholder="digite um titulo" type="text" value={dados.descricao} onChange={e => setDados({ ...dados, descricao: (e.target.value).toLocaleUpperCase() })} />
         <input className="input-valor" placeholder="digite um valor" type="number" value={dados.valor} onChange={e => setDados({ ...dados, valor: e.target.value })} />
       </div>
       <button className="btn-adicionar" onClick={handleClickAdd}>+</button>

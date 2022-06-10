@@ -26,7 +26,12 @@ input {
   border-radius: 5px;
 }
 
+.input-titulo {
+  width: 150px;
+}
+
 .input-valor {
+  width: 100px;
   margin-left: 10px;
 }
 
