@@ -1,30 +1,21 @@
-import { useEffect, useState } from "react"
-import AdicionarEntrada from "../Components/AdicionarEntradas"
+import { useState } from "react"
+import MesAtual from "../Components/MesAtual"
 import './Home.css'
 
 
 
 export default function Home() {
 
-  const [localDados, setLocalDados] = useState([])
-  const [soma, setSoma] = useState(0)
-  const [chave, setChave] = useState(false)
+  const [chave, setChave] = useState('')
+  const [mes, setMes] = useState('')
+  const [dados, setDados] = useState({
+    id: Math.floor(Date.now() * Math.random()).toString(36),
+    descricao: '',
+    valor: ''
+  })
 
 
-  function handleClickRemove(e) {
-
-    const linha = e.target.parentNode
-
-    const dadosDelet = localDados.filter(item => linha.id !== item.id)
-
-    localStorage.setItem('dados', JSON.stringify(
-      dadosDelet
-    ))
-
-    setLocalDados(JSON.parse(localStorage.getItem('dados')))
-    setChave(false)
-  }
-
+/*
   function somaValor() {
     const somaDados = localDados.map(item => +item.valor).reduce((acc, acu) => {
       return acc + acu
@@ -46,32 +37,36 @@ export default function Home() {
 
     buscaLocalStorage()
 
-  }, [localDados]);
+  }, [dados]);
+*/
 
-
+  function handleClickAdd(e) {
+    setMes('')
+    if (localStorage.getItem('dados') === null) {
+      localStorage.setItem('dados', JSON.stringify([dados]))
+    } else {
+      localStorage.setItem('dados', JSON.stringify([
+        ...JSON.parse(localStorage.getItem('dados')),
+        dados
+      ]))
+    }
+    setDados({ id: Math.floor(Date.now() * Math.random()).toString(36), descricao: '', valor: '' })
+    //setChave(false)
+  }
 
   return (
     <div className="container">
-      <AdicionarEntrada />
+      <h1>ADICIONE OS GASTOS</h1>
       <div>
-        <hr />
-        <ul>
-          {localDados && localDados.map(el => {
-            return (
-              <>
-                <li className="list-organizada" key={el.id} id={el.id}>
-                  <button className="btn-excluir" onClick={handleClickRemove}>X</button>
-                  <p>{el.descricao} * <span style={{ color: 'red' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
-                </li>
-              </>
-            )
-          })}
-        </ul>
+        <span><input type="radio" value="mesAtual" onChange={e => setMes(e.target.value)} checked={mes === 'mesAtual'} />Mês Atual</span>
+        <span><input type="radio" value="proxMes" onChange={e => setMes(e.target.value)}  checked={mes === 'proxMes'} />Próximo Mês</span>
       </div>
-      <div className="box-total">
-        <h1>Total</h1>
-        <p className="paragrafo-total"> <span style={{ color: 'red' }}> {soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
+      <div>
+        <input className="input-titulo" placeholder="digite um titulo" type="text" value={dados.descricao} onChange={e => setDados({ ...dados, descricao: (e.target.value).toLocaleUpperCase() })} />
+        <input className="input-valor" placeholder="digite um valor" type="number" value={dados.valor} onChange={e => setDados({ ...dados, valor: e.target.value })} />
       </div>
+      <button className="btn-adicionar" onClick={handleClickAdd}>+</button>
+      <MesAtual chave={dados.id}/>
     </div>
   )
 }
