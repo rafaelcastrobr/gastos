@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './Page/Home';
-import Footer from './Page/Footer'
+import Footer from './Components/Footer'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
