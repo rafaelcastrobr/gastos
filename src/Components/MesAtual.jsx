@@ -1,49 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { ContentContext } from "../Contexts/ContentProvider"
 
 
-export default function MesAtual(props) {
+export default function MesAtual() {
+  const { state: { localDados, soma }, dispatch } = useContext(ContentContext)
 
-  const [localDados, setLocalDados] = useState([])
-  const [soma, setSoma] = useState(0)
-  const [chave, setChave] = useState(false)
-
-
-  function somaValor() {
-    const somaDados = localDados.map(item => +item.valor).reduce((acc, acu) => {
-      return acc + acu
-    }, 0)
-
-    return somaDados
-  }
 
   function handleClickRemove(e) {
-
     const linha = e.target.parentNode
 
-    const dadosDelet = localDados.filter(item => linha.id !== item.id)
-
-    localStorage.setItem('dados', JSON.stringify(
-      dadosDelet
-    ))
-
-    setLocalDados(JSON.parse(localStorage.getItem('dados')))
-    setSoma(somaValor())
-    setChave(true)
-
+    dispatch({ type: 'EXCLUI_LINHA', linha: linha})
   }
-
-  useEffect(() => {
-    setSoma(somaValor())
-    //if (chave) return
-    if (localStorage.getItem('dados')) {
-      setLocalDados(JSON.parse(localStorage.getItem('dados')))
-      setSoma(somaValor())
-      setChave(true)
-    }
-
-    
-    // eslint-disable-next-line
-  }, [, props.chave]);
 
 
   return (
@@ -67,6 +34,7 @@ export default function MesAtual(props) {
         <h1>Total</h1>
         <p className="paragrafo-total"> <span style={{ color: 'red' }}> {soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
       </div>
+
     </>
   )
 }
