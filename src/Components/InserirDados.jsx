@@ -21,8 +21,6 @@ export default function InserirDados() {
 
   function handleClickAdd(e) {
 
-    console.log(typeof +valor === Number)
-
     if (mes === '') return dispatch({ type: 'ERRO_MES' })
     if (descricao === '' || valor === '') return dispatch({ type: 'ERRO_VALORES'})
 
@@ -58,7 +56,7 @@ export default function InserirDados() {
       <span style={{ color: 'red' }}>{erros.valores.toggle && erros.valores.menssagem}</span>
 
       <div>
-        <input className="input-titulo" name="descricao" placeholder="digite um titulo" type="text" value={descricao} onChange={pegaDados} />
+        <input className="input-titulo" name="descricao" placeholder="digite um titulo" type="text" value={descricao.toUpperCase()} onChange={pegaDados} />
         <input className="input-valor" name="valor" placeholder="digite um valor" type="number" value={valor} onChange={pegaDados} />
       </div>
       <button className="btn-adicionar" onClick={handleClickAdd}>+</button>
