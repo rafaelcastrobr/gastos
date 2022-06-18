@@ -47,10 +47,10 @@ export default function InserirDados() {
         <div>
           <span style={{ color: 'red' }}>{erros.mes.toggle && erros.mes.menssagem}</span>
         </div>
-        <div>
+        <div style={{display: 'flex', flexDirections: 'row'}}>
 
-        <span><input type="radio" value="dados" onChange={escolheMes} checked={mes === 'dados'} />Mês Atual</span>
-        <span><input type="radio" value="dadosProxMes" onChange={escolheMes} checked={mes === 'dadosProxMes'} />Próximo Mês</span>
+        <span style={{display: 'flex', alignItems: 'center'}}><input type="radio" style={{width: '20px', height: '25px'}} value="dados" onChange={escolheMes} checked={mes === 'dados'} />Mês Atual</span>
+        <span style={{display: 'flex', alignItems: 'center'}}><input type="radio" style={{width: '20px', height: '25px'}} value="dadosProxMes" onChange={escolheMes} checked={mes === 'dadosProxMes'} />Próximo Mês</span>
         </div>
       </div>
       <span style={{ color: 'red' }}>{erros.valores.toggle && erros.valores.menssagem}</span>
