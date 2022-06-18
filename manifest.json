@@ -1,0 +1,16 @@
+{
+  "name": "Gastos Gerais",
+  "short_name": "Gastos",
+  "lang": "pt-BR",
+  "start_url": "https://gastosgerais.netlify.app/",
+  "display": "standalone",
+  "theme_color": "#362B3D",
+  "icons": [
+    {
+      "src": "assets/ico/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "png"
+    }
+  ],
+  "background_color": "#362B3D"
+}

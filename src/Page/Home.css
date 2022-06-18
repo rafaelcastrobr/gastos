@@ -26,6 +26,14 @@ input {
   border-radius: 5px;
 }
 
+.input-mes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
 .input-titulo {
   width: 150px;
 }
@@ -57,11 +65,24 @@ button {
 }
 
 .btn-excluir {
-  margin-right: 40px;
+  margin-right: 30px;
   color: antiquewhite;
   background-color: crimson;
   padding: 5px;
   width: 25px;
+}
+
+.btn-passar-prox-mes {
+  margin-right: 30px;
+  color: antiquewhite;
+  background-color: rgb(15, 103, 129);
+  padding: 5px;
+  width: 25px;
+}
+
+.btn-detalhe {
+  margin-right: 10px;
+  cursor: default;
 }
 
 .box-total {

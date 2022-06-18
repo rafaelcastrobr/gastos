@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import { ContentContext } from "../Contexts/ContentProvider"
 import { geraId } from "../Func/geraId"
+import { salvaDados } from "../Func/salvaDados"
 
 
 export default function InserirDados() {
-  const { state: { descricao, valor, id }, dispatch } = useContext(ContentContext)
+  const { state: { descricao, valor, id, mes, erros }, dispatch } = useContext(ContentContext)
 
 
   function pegaDados(e) {
@@ -12,7 +13,21 @@ export default function InserirDados() {
     dispatch({ type: 'LE_DADOS', payload: { [name]: value }, name: name })
   }
 
+  function escolheMes(e) {
+    const { value } = e.target
+
+    dispatch({ type: 'PEGA_MES', payload: value })
+  }
+
   function handleClickAdd(e) {
+
+    console.log(typeof +valor === Number)
+
+    if (mes === '') return dispatch({ type: 'ERRO_MES' })
+    if (descricao === '' || valor === '') return dispatch({ type: 'ERRO_VALORES'})
+
+    
+
     dispatch({ type: 'GERAID', payload: geraId() })
 
     const dados = {
@@ -21,25 +36,27 @@ export default function InserirDados() {
       valor
     }
 
-    if (localStorage.getItem('dados') === null) {
-      localStorage.setItem('dados', JSON.stringify([dados]))
-    } else {
-      localStorage.setItem('dados', JSON.stringify([
-        ...JSON.parse(localStorage.getItem('dados')),
-        dados
-      ]))
-    }
+    salvaDados(dados, mes)
 
-    dispatch({ type: 'ADICIONA_DADOS' })
+    dispatch({ type: 'ADICIONA_DADOS', mes: mes})
   }
 
 
   return (
     <div className="container">
       <h1>ADICIONE OS GASTOS</h1>
-      <div>
+      <div className="input-mes">
+        <div>
+          <span style={{ color: 'red' }}>{erros.mes.toggle && erros.mes.menssagem}</span>
+        </div>
+        <div>
 
+        <span><input type="radio" value="dados" onChange={escolheMes} checked={mes === 'dados'} />Mês Atual</span>
+        <span><input type="radio" value="dadosProxMes" onChange={escolheMes} checked={mes === 'dadosProxMes'} />Próximo Mês</span>
+        </div>
       </div>
+      <span style={{ color: 'red' }}>{erros.valores.toggle && erros.valores.menssagem}</span>
+
       <div>
         <input className="input-titulo" name="descricao" placeholder="digite um titulo" type="text" value={descricao} onChange={pegaDados} />
         <input className="input-valor" name="valor" placeholder="digite um valor" type="number" value={valor} onChange={pegaDados} />
@@ -52,6 +69,4 @@ export default function InserirDados() {
 
 
 /*
-        <span><input type="radio" value="mesAtual" onChange={e => setMes(e.target.value)} checked={mes === 'mesAtual'} />Mês Atual</span>
-  <span><input type="radio" value="proxMes" onChange={e => setMes(e.target.value)}  checked={mes === 'proxMes'} />Próximo Mês</span>
 */
