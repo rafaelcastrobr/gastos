@@ -16,5 +16,5 @@ https://gastosgerais.netlify.app/
 ## 🥰 Preview
 ![img](src/img/code.png)
 
-## Agradecimento
+## ❤️ Agradecimento
 Para minha namorada Andressa que precisava de algo assim então tive a ideia de produzir um programinha para tal tarefa.
