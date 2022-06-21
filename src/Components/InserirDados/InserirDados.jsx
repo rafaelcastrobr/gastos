@@ -3,6 +3,8 @@ import { ContentContext } from "../../Contexts/ContentProvider"
 import { geraId } from "../../Func/geraId"
 import { salvaDados } from "../../Func/salvaDados"
 
+import money from '../../assets/img/money.png'
+
 import './StyleInserirDados.css'
 
 
