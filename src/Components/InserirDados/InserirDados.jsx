@@ -1,7 +1,9 @@
 import { useContext } from "react"
-import { ContentContext } from "../Contexts/ContentProvider"
-import { geraId } from "../Func/geraId"
-import { salvaDados } from "../Func/salvaDados"
+import { ContentContext } from "../../Contexts/ContentProvider"
+import { geraId } from "../../Func/geraId"
+import { salvaDados } from "../../Func/salvaDados"
+
+import './StyleInserirDados.css'
 
 
 export default function InserirDados() {

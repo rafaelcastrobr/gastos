@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { ContentContext } from "../Contexts/ContentProvider"
-
+import { ContentContext } from "../../Contexts/ContentProvider"
+import './StyleProxMes.css'
 
 export default function ProxMes() {
   const { state: { dadosProxMes, somaProxMes }, dispatch } = useContext(ContentContext)

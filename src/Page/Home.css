@@ -26,27 +26,6 @@ input {
   border-radius: 5px;
 }
 
-.input-mes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-
-}
-
-.input-titulo {
-  width: 150px;
-}
-
-.input-valor {
-  width: 100px;
-  margin-left: 10px;
-}
-
-input:focus {
-  box-shadow: 0 0 0 0;
-  outline: 0;
-}
 
 button {
   border: none;
@@ -72,18 +51,6 @@ button {
   width: 25px;
 }
 
-.btn-passar-prox-mes {
-  margin-right: 30px;
-  color: antiquewhite;
-  background-color: rgb(15, 103, 129);
-  padding: 5px;
-  width: 25px;
-}
-
-.btn-detalhe {
-  margin-right: 10px;
-  cursor: default;
-}
 
 .box-total {
   display: flex;
@@ -93,18 +60,4 @@ button {
 
 .paragrafo-total {
   margin-top: 0;
-}
-
-.footer-creditos {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  font-size: 13px;
-  margin-right: 10px;
-  margin-top: 30px;
-}
-
-.footer-creditos img {
-  height: 35px;
 }

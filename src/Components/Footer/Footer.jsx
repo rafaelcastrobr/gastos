@@ -1,8 +1,8 @@
+import './StyleFooter.css'
 
 export default function Footer() {
   return (
     <>
-
       <footer className="footer-creditos">
         <div className="btn-detalhe">
           <span>

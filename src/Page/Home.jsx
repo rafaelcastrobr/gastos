@@ -1,8 +1,8 @@
 import MesAtual from "../Components/MesAtual"
-import InserirDados from "../Components/InserirDados"
+import InserirDados from "../Components/InserirDados/InserirDados"
 import ContentProvider from "../Contexts/ContentProvider"
 import './Home.css'
-import ProxMes from "../Components/ProxMes"
+import ProxMes from "../Components/ProxMes/ProxMes"
 
 
 
