@@ -56,11 +56,15 @@ export function reducer(state, action) {
 
       newState.descricao = dadoAtualizado[0].descricao
       newState.valor = dadoAtualizado[0].valor
-      newState.mes = 'dados'
+      newState.mes = `${nomeValor}`
 
       apagarDados(id, nomeValor, dadosAtualizar)
-
-      newState.dadosProxMes = JSON.parse(localStorage.getItem('dadosProxMes'))
+      
+      if(nomeValor == 'dados') {
+         newState.dados = JSON.parse(localStorage.getItem('dados'))
+      } else if (nomeValor == 'dadosProxMes'){
+         newState.dadosProxMes = JSON.parse(localStorage.getItem('dadosProxMes'))
+      }
 
       window.scrollTo(0, 0)
 

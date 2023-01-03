@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="btn-detalhe">
           <span>
             <button className="btn-passar-prox-mes btn-detalhe" >^</button>
-            Adciciona no Próx Mês
+            Atualiza valor
           </span>
         </div>
         Feito por Rafael Castro
