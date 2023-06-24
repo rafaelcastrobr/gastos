@@ -33,7 +33,7 @@ export default function ProxMes() {
                     <li name="dadosProxMes" className="list-organizada" key={el.id} id={el.id}>
                       <button className="btn-excluir" onClick={handleClickRemove}>X</button>
                       <button className="btn-passar-prox-mes" onClick={handleClickMesAtual} >^</button>
-                      <p>{el.descricao} * <span style={{ color: 'red' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
+                      <p>{el.descricao} * <span style={{ color:el.valor.includes('-')? 'red' :  'blue' }}>{(+el.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
                     </li>
                   </>
                 )
