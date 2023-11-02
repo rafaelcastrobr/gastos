@@ -65,7 +65,9 @@ export function reducer(state, action) {
          newState.dados = JSON.parse(localStorage.getItem('dados'))
       } else if (nomeValor == 'dadosProxMes'){
          newState.dadosProxMes = JSON.parse(localStorage.getItem('dadosProxMes'))
-      }
+      }else if (nomeValor == 'outrosDados'){
+        newState.outrosDados = JSON.parse(localStorage.getItem('outrosDados'))
+     }
 
       window.scrollTo(0, 0)
 
