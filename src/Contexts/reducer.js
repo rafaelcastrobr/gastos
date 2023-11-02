@@ -5,6 +5,7 @@ import { apagarDados } from '../Func/apagarDados'
 export const INITIAL_STATE = {
   dados: JSON.parse(localStorage.getItem('dados')),
   dadosProxMes: JSON.parse(localStorage.getItem('dadosProxMes')),
+  outrosDados: JSON.parse(localStorage.getItem('outrosDados')),
   id: geraId(),
   descricao: '',
   valor: '',

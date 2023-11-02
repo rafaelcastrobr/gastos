@@ -55,6 +55,7 @@ export default function InserirDados() {
         <div className="input-box-mes">
           <div className="div-input-mes"><input type="radio" style={{ width: '20px', height: '25px' }} value="dados" onChange={escolheMes} checked={mes === 'dados'} />Mês Atual</div>
           <div className="div-input-mes"><input type="radio" style={{ width: '20px', height: '25px' }} value="dadosProxMes" onChange={escolheMes} checked={mes === 'dadosProxMes'} />Próximo Mês</div>
+          <div className="div-input-mes"><input type="radio" style={{ width: '20px', height: '25px' }} value="outrosDados" onChange={escolheMes} checked={mes === 'outrosDados'} />Outros Dados</div>
         </div>
       </div>
       <span style={{ color: 'red' }}>{erros.valores.toggle && erros.valores.menssagem}</span>

@@ -42,7 +42,7 @@ export default function ProxMes() {
           </div>
           <div className="box-total">
             <h1>Total</h1>
-            <p className="paragrafo-total"> <span style={{ color: 'red' }}> {somaProxMes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
+            <p className="paragrafo-total"> <span style={{ color:  `${somaProxMes}`.includes('-')? 'red' :  'blue' }}> {somaProxMes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
           </div>
         </>
       }

@@ -43,7 +43,7 @@ export default function MesAtual() {
           </div>
           <div className="box-total">
             <h1>Total</h1>
-            <p className="paragrafo-total"> <span style={{ color: 'red' }}> {soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
+            <p className="paragrafo-total"> <span style={{ color: `${soma}`.includes('-')? 'red' :  'blue' }}> {soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span></p>
           </div>
         </>
       }
