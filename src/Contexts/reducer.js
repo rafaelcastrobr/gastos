@@ -45,6 +45,33 @@ export function reducer(state, action) {
 
       return newState
     }
+    case 'COPIA_NAO_APAGA': {
+      const newState = { ...state }
+
+      const id = action.linha.id
+      const nomeValor = action.linha.attributes.name.value
+      const dadosAtualizar = newState[nomeValor]
+
+      const dadoAtualizado = dadosAtualizar.filter(item => id === item.id)
+
+
+      newState.descricao = dadoAtualizado[0].descricao
+      newState.valor = dadoAtualizado[0].valor
+      newState.mes = `${nomeValor}`
+
+      
+      if(nomeValor === 'dados') {
+         newState.dados = JSON.parse(localStorage.getItem('dados'))
+      } else if (nomeValor === 'dadosProxMes'){
+         newState.dadosProxMes = JSON.parse(localStorage.getItem('dadosProxMes'))
+      }else if (nomeValor === 'outrosDados'){
+        newState.outrosDados = JSON.parse(localStorage.getItem('outrosDados'))
+     }
+
+      window.scrollTo(0, 0)
+
+      return newState
+    }
     case 'PASSA_PARA_MES_ATUAL': {
       const newState = { ...state }
 
@@ -61,11 +88,11 @@ export function reducer(state, action) {
 
       apagarDados(id, nomeValor, dadosAtualizar)
       
-      if(nomeValor == 'dados') {
+      if(nomeValor === 'dados') {
          newState.dados = JSON.parse(localStorage.getItem('dados'))
-      } else if (nomeValor == 'dadosProxMes'){
+      } else if (nomeValor === 'dadosProxMes'){
          newState.dadosProxMes = JSON.parse(localStorage.getItem('dadosProxMes'))
-      }else if (nomeValor == 'outrosDados'){
+      }else if (nomeValor === 'outrosDados'){
         newState.outrosDados = JSON.parse(localStorage.getItem('outrosDados'))
      }
 
